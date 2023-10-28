@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:spga/txt_box.dart';
 
 final theme = ThemeData(
@@ -12,11 +13,11 @@ final theme = ThemeData(
 );
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -24,21 +25,13 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final c4s1 = TextEditingController();
-
   final c4s2 = TextEditingController();
-
   final c3s1 = TextEditingController();
-
   final c3s2 = TextEditingController();
-
   final c3s3 = TextEditingController();
-
   final c1s1 = TextEditingController();
-
   final c1s2 = TextEditingController();
-
   final c1s3 = TextEditingController();
-
   String spga = '0';
 
   void onChange(a) {
@@ -66,23 +59,22 @@ class _MyAppState extends State<MyApp> {
 
   int toGrade(a) {
     a = int.parse(a);
-    if (a >= 90) {
+    if (a >= 90)
       return 10;
-    } else if (a >= 80) {
+    else if (a >= 80)
       return 9;
-    } else if (a >= 70) {
+    else if (a >= 70)
       return 8;
-    } else if (a >= 60) {
+    else if (a >= 60)
       return 7;
-    } else if (a >= 50) {
+    else if (a >= 50)
       return 6;
-    } else if (a >= 45) {
+    else if (a >= 45)
       return 5;
-    } else if (a >= 40) {
+    else if (a >= 40)
       return 4;
-    } else {
+    else
       return 0;
-    }
   }
 
   // This widget is the root of your application.
@@ -90,6 +82,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     // final width = MediaQuery.of(context).size.width;
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: theme.copyWith(
         appBarTheme: AppBarTheme(
           backgroundColor: theme.colorScheme.background,
@@ -130,6 +123,16 @@ class _MyAppState extends State<MyApp> {
                   TextBox(ctrl: c1s1, onChange: onChange, s: 1, c: 1),
                   TextBox(ctrl: c1s2, onChange: onChange, s: 2, c: 1),
                   TextBox(ctrl: c1s3, onChange: onChange, s: 3, c: 1),
+                  const SizedBox(height: 10),
+                  Text(
+                    'SGPA : $spga ',
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1.5,
+                      fontFamily: 'american typewriter',
+                    ),
+                  ),
                 ],
               ),
             ),
